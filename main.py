@@ -41,6 +41,7 @@ portpholio = [
 ]
 
 app = Flask(__name__)
+
 app.config['SECRET_KEY'] =os.environ.get('FLASK_KEY')
 
 load_dotenv()
@@ -52,7 +53,7 @@ def send_email(name, email, subject, message):
     with smtplib.SMTP("smtp.gmail.com", 587) as connection:
         connection.starttls()
         connection.login(MAIL_ADDRESS, MAIL_APP_PW)
-        connection.sendmail(MAIL_ADDRESS, email, email_message)
+        connection.sendmail(MAIL_ADDRESS, MAIL_ADDRESS, email_message)
 
 
 def calculate_age(birthdate: str) -> int:
