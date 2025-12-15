@@ -3,7 +3,7 @@ from flask_bootstrap import Bootstrap5
 import smtplib
 import os
 from datetime import datetime
-from form import ContactForm
+
 from dotenv import load_dotenv
 
 portpholio = [
@@ -47,13 +47,6 @@ load_dotenv()
 
 MAIL_ADDRESS = os.environ.get("EMAIL_KEY")
 MAIL_APP_PW = os.environ.get("PASSWORD_KEY")
-def send_email(name, email, subject, message):
-    email_message = f"Subject: {subject}\n\nName: {name}\nEmail: {email}\nMessage: {message}"
-    with smtplib.SMTP("smtp.gmail.com", 587) as connection:
-        connection.starttls()
-        connection.login(MAIL_ADDRESS, MAIL_APP_PW)
-        connection.sendmail(MAIL_ADDRESS, email, email_message)
-
 
 def calculate_age(birthdate: str) -> int:
     # Convert the birthdate string to a datetime object
@@ -97,27 +90,7 @@ def portfolio():
     global portpholio
     return render_template('portfolio.html',portpholio=portpholio)
 
-@app.route('/contact', methods=['GET', 'POST'])
-def contact():
-    form = ContactForm()
-
-    if form.validate_on_submit():
-        name = form.name.data
-        email = form.email.data
-        subject = form.subject.data
-        message = form.message.data
-
-        try:
-            # Send the email
-            send_email(name, email, subject, message)
-            flash('Your message has been sent successfully!', 'success')
-        except Exception as e:
-            flash(f'An error occurred: {e}', 'danger')
-
-        return redirect(url_for('contact'))
-
-    return render_template('contact.html', form=form)
 
 # Start the Flask app
 if __name__ == "__main__":
-    app.run(debug=True, port=5001)
+    app.run(port=5001)

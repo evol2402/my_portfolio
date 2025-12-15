@@ -1,10 +1,64 @@
 {%include 'header.html'%}
+<style>
+  /* Subtle lift + glow on the Hire Me logo */
+  .logo.hire-me .sitename {
+    transition: transform 0.25s ease, text-shadow 0.25s ease;
+  }
+  .logo.hire-me:hover .sitename {
+    transform: translateY(-2px) scale(1.03);
+    text-shadow: 0 8px 18px rgba(255, 255, 255, 0.25);
+  }
+
+  /* Tech badges */
+  :root { --tech-icon-size: 38px; }
+  @media (max-width: 576px) { :root { --tech-icon-size: 32px; } }
+
+  .tech-icons {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .tech-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--tech-icon-size);
+    height: var(--tech-icon-size);
+    padding: 6px;
+    border-radius: 50%;
+    background: #000;
+    color: #f5f5f5;
+    transition: transform 0.2s ease;
+  }
+  .tech-icon svg { width: 100%; height: 100%; }
+  .tech-icon:hover { transform: translateY(-2px); }
+  .tech-icon::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -1.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(17, 17, 17, 0.9);
+    color: #fff;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+  }
+  .tech-icon:hover::after { opacity: 1; }
+</style>
 <body class="home-page">
 
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-    <a href="{{url_for('contact')}}" class="logo d-flex align-items-center">
+    <a href="https://www.linkedin.com/in/anirudh2402" class="logo hire-me d-flex align-items-center">
         <h1 class="sitename">Hire Me</h1>
       </a>
 
@@ -14,7 +68,7 @@
           <li><a href="{{ url_for('about') }}">About</a></li>
           <li><a href="{{ url_for('resume') }}">Resume</a></li>
           <li><a href="{{ url_for('portfolio') }}">Portfolio</a></li>
-          <li><a href="{{ url_for('contact') }}">Contact</a></li>
+         
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -36,10 +90,49 @@
         <h2>Anirudh</h2>
         <p>I'm <span class="typed" data-typed-items="Innovator, Developer, Freelancer, Analyst">Creative</span><span class="typed-cursor typed-cursor--blink"></span></p>
         <div class="social-links">
-          <a href="https://x.com/anirudh050504" target="_blank"><i class="bi bi-twitter-x"></i></a>
+          <!-- <a href="https://x.com/anirudh050504" target="_blank"><i class="bi bi-twitter-x"></i></a> -->
                  <a href="https://github.com/evol2402" target="_blank"><i class="bi bi-github"></i></a>
                  <a href="https://www.linkedin.com/in/anirudh2402" target="_blank"><i class="bi bi-linkedin"></i></a>
                </div>
+        <div class="tech-icons">
+          <span class="tech-icon" data-label="Python">
+            <svg aria-label="Python" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.8 2.5h3.9c2.6 0 3.8 1.2 3.8 3.9v2c0 2.3-1.4 3.6-3.7 3.6h-5.6c-.9 0-1.4.5-1.4 1.4v1.8c0 1 .5 1.4 1.5 1.4H14c.9 0 1.4-.5 1.4-1.4V14h3.9v1.6c0 2.9-1.9 4.9-4.9 4.9h-4.8c-3 0-4.9-2-4.9-4.8V15c0-2.2 1.4-3.6 3.8-3.6h5.5c.9 0 1.4-.5 1.4-1.4V8.3c0-1-.5-1.4-1.4-1.4H10c-.9 0-1.4.5-1.4 1.4V10H4.8V8.4c0-2.9 1.9-4.9 4.9-4.9h2.1Zm2.1 1.9c-.7 0-1.2.5-1.2 1.2 0 .7.5 1.2 1.2 1.2.7 0 1.2-.5 1.2-1.2 0-.7-.5-1.2-1.2-1.2Zm-5.8 10.3c-.7 0-1.2.5-1.2 1.2 0 .7.5 1.2 1.2 1.2.7 0 1.2-.5 1.2-1.2 0-.7-.5-1.2-1.2-1.2Z"/>
+            </svg>
+          </span>
+          <span class="tech-icon" data-label="Flask">
+            <svg aria-label="Flask" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13.5 3v5.4l3.3 5.7c.7 1.3-.2 2.4-1.7 2.4H8.9c-1.5 0-2.4-1.1-1.7-2.4L10.5 8.4V3h3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <path d="M9.2 13.5h5.6M10 15.6h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="tech-icon" data-label="React">
+            <svg aria-label="React" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+              <path d="M12 6.2c2 0 3.9.3 5.2.8 1.2.5 1.9 1.1 1.9 1.8 0 .7-.7 1.3-1.9 1.8-1.3.5-3.2.8-5.2.8-2 0-3.9-.3-5.2-.8-1.2-.5-1.9-1.1-1.9-1.8 0-.7.7-1.3 1.9-1.8 1.3-.5 3.2-.8 5.2-.8Z" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M8.2 8.1c1-1.7 2.2-3 3.3-3.7 1.1-.6 2-.6 2.6 0 .6.6.7 1.6.3 2.8-.4 1.4-1.4 3-2.6 4.9-1.2 1.9-2.5 3.4-3.6 4.4-1.1 1-2.1 1.5-2.9 1.2-.8-.3-1.2-1.2-.9-2.5.3-1.4 1.4-3.1 2.8-4.9 1-1.3 1.9-2.4 3-4.2Z" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M8.2 15.9c1 1.7 2.2 3 3.3 3.7 1.1.6 2 .6 2.6 0 .6-.6.7-1.6.3-2.8-.4-1.4-1.4-3-2.6-4.9-1.2-1.9-2.5-3.4-3.6-4.4-1.1-1-2.1-1.5-2.9-1.2-.8.3-1.2 1.2-.9 2.5.3 1.4 1.4 3.1 2.8 4.9 1 1.3 1.9 2.4 3 4.2Z" stroke="currentColor" stroke-width="1.2"/>
+            </svg>
+          </span>
+          <span class="tech-icon" data-label="Tailwind">
+            <svg aria-label="Tailwind CSS" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.8 7.1C12.9 5.5 14.3 4.7 16 4.7c2.5 0 4 1.8 4.5 5.4-1-.9-2-.9-3-.3-.6.4-1.1 1.1-1.6 1.9-.8 1.3-2 1.9-3.7 1.9-2.5 0-4-1.8-4.5-5.4 1 .9 2 .9 3 .3.6-.4 1.1-1.1 1.6-1.9Z" fill="currentColor"/>
+              <path d="M6 12.3c1.1-1.6 2.5-2.4 4.2-2.4 2.5 0 4 1.8 4.5 5.4-1-.9-2-.9-3-.3-.6.4-1.1 1.1-1.6 1.9-.8 1.3-2 1.9-3.7 1.9-2.5 0-4-1.8-4.5-5.4 1 .9 2 .9 3 .3.6-.4 1.1-1.1 1.6-1.9Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="tech-icon" data-label="Node.js">
+            <svg aria-label="Node.js" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M11.2 3.2c.5-.3 1.1-.3 1.6 0l6.2 3.6c.5.3.8.8.8 1.3v7.2c0 .5-.3 1-.8 1.3l-6.2 3.6c-.5.3-1.1.3-1.6 0l-6.2-3.6c-.5-.3-.8-.8-.8-1.3V8.1c0-.5.3-1 .8-1.3l6.2-3.6Z" stroke="currentColor" stroke-width="1.2"/>
+              <path d="M12.1 9.2c0-.5.5-.8 1.1-.5l2.6 1.5c.2.1.4.4.4.7v3c0 .3-.2.6-.4.7l-2.6 1.5c-.6.3-1.1 0-1.1-.5v-1.3l1.5-.9v-1.4l-1.5-.9V9.2Z" fill="currentColor"/>
+              <path d="M11 8.7c.3.2.4.5.4.8v5c0 .3-.2.6-.4.8l-1.9 1.1c-.6.3-1.1 0-1.1-.5v-1.2l1.4-.8V9.4c0-.3.2-.6.4-.8l1.2-.7Z" fill="currentColor"/>
+            </svg>
+          </span>
+          <span class="tech-icon" data-label="Docker">
+            <svg aria-label="Docker" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.7 11.8c-.5-.4-1.5-.4-2.3-.2-.1-1-.9-1.8-1.7-2.3l-.3-.2-.2.4c-.3.6-.3 1.4-.1 2.1-.5.1-1 .2-1.5.2H4.7l-.1.3c-.5 1.5-.2 3 .8 4.2.9 1 2.3 1.6 3.8 1.6 3 0 5.5-1.4 7-4 .9 0 2 0 2.9-.7.6-.4 1-1 1.2-1.8.1-.7 0-1.3-.6-1.8ZM5.6 10.1h1.9V8.2H5.6v1.9Zm2.2 0h1.9V8.2H7.8v1.9Zm2.2 0h1.9V8.2H10v1.9Zm2.2 0h1.9V8.2h-1.9v1.9Zm-6.6 2.2h1.9v-1.9H5.6v1.9Zm2.2 0h1.9v-1.9H7.8v1.9Zm2.2 0h1.9v-1.9H10v1.9Zm2.2 0h1.9v-1.9h-1.9v1.9Zm2.2 0h1.9v-1.9h-1.9v1.9Z"/>
+            </svg>
+          </span>
+        </div>
       </div>
 
     </section><!-- /Hero Section -->

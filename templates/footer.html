@@ -1,23 +1,14 @@
 
-<footer id="footer" class="footer dark-background">
+<footer id="footer" class="footer dark-background position-relative">
   <div class="container">
-    <h3 class="sitename">Evol</h3>
-    <p>Driven by a passion for data analysis, Python programming, and solving complex problems, I am pursuing a career in IT to create impactful, data-driven solutions. This portfolio reflects my growth, technical skills, and commitment to continuously learning and adapting in the ever-evolving fields of data analytics and software development.</p>
-    <div class="social-links d-flex justify-content-center">
-      <a href="https://x.com/anirudh050504" target="_blank"><i class="bi bi-twitter-x"></i></a>
-      <a href="https://github.com/evol2402" target="_blank"><i class="bi bi-github"></i></a>
-      <a href="https://www.linkedin.com/in/anirudh2402" target="_blank"><i class="bi bi-linkedin"></i></a>
-    </div>
-    <div class="container">
-      <div class="copyright">
-        <span>&copy; {{ current_year }} Evol. All Rights Reserved.</span>
-      </div>
-      <button id="toggle-credits" class="toggle-credits">Credits</button>
-        <div>
-      <div class="credits" id="credits-section">
-            <p>Designed by <strong>Anirudh</strong>, by adapting the <a href="https://bootstrapmade.com/personal-free-resume-bootstrap-template/" target="_blank" rel="noopener">Bootstrap Template</a> by BootstrapMade.com.</p>
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-xl-8 text-center">
+        <p class="mb-3">Full-stack + DevOps: Python/Flask and React/Node.js, containerized with Docker, production-ready mindset from ops intern experience. Always learning and adapting for the next role.</p>
+        <div class="social-links d-flex justify-content-center gap-3 mb-3">
+          <a href="https://github.com/evol2402" target="_blank"><i class="bi bi-github"></i></a>
+          <a href="https://www.linkedin.com/in/anirudh2402" target="_blank"><i class="bi bi-linkedin"></i></a>
         </div>
-    </div>
+      </div>
     </div>
   </div>
 </footer>
@@ -43,20 +34,27 @@
 
 <!-- Main JS File -->
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const toggleButton = document.getElementById('toggle-credits');
-    const creditsSection = document.getElementById('credits-section');
+<style>
+  .social-links a {
+    width: 46px;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #4ade80; /* fresh green */
+    color: #0b0b0b;
+    font-size: 20px;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .social-links a:hover {
+    background: #6bf297;
+    color: #000;
+    box-shadow: 0 6px 16px rgba(74, 222, 128, 0.35);
+    transform: translateY(-2px);
+  }
 
-    toggleButton.addEventListener('click', function () {
-      creditsSection.classList.toggle('show');
-      // Update button text
-      toggleButton.textContent = creditsSection.classList.contains('show')
-        ? 'Hide Credits'
-        : 'Credits';
-    });
-  });
-</script>
+</style>
 
 </body>
 </html>
